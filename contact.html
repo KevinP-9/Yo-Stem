@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yes | – San Diego City College</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: start; }
+    .contact-info-box h2 { font-size: 1.3rem; font-weight: 800; color: var(--red); margin-bottom: 16px; }
+    .c-detail { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .c-detail:last-child { border-bottom: none; }
+    .c-detail .ico { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .c-detail strong { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-mid); display: block; margin-bottom: 3px; }
+    .c-detail span { font-size: 0.95rem; font-weight: 600; color: var(--gray-dark); }
+    .form-box { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; }
+    .form-box h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 6px; color: var(--gray-dark); }
+    .form-box .sub { font-size: 0.88rem; color: var(--gray-mid); margin-bottom: 22px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--gray-dark); margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 4px;
+      font-size: 0.93rem; font-family: var(--font); color: var(--gray-dark); outline: none;
+      background: #fafafa; transition: border-color var(--transition);
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--red); background: white;
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .btn-submit {
+      width: 100%; background: var(--red); color: white; padding: 12px;
+      border: none; border-radius: 4px; font-size: 0.97rem; font-weight: 700;
+      font-family: var(--font); cursor: pointer; transition: background var(--transition);
+    }
+    .btn-submit:hover { background: var(--red-dark); }
+    @media(max-width:768px) { .contact-layout { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="https://www.sdcity.edu" target="_blank" rel="noopener">SDCC Home</a>
+    <a href="https://www.sdcity.edu/about/leadership/student-services/hsi.aspx" target="_blank" rel="noopener">Official HSI Page</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-logo">YS</div>
+      <div class="brand-text">
+        <span class="college">San Diego City College</span>
+        <span class="program">Yo Soy STEM</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs &amp; Services</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contact.html" class="nav-cta active">Get Involved</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="breadcrumb-bar">
+    <a href="index.html">Home</a><span class="sep">&rsaquo;</span>
+    <strong>Get Involved</strong>
+  </div>
+
+  <div class="page-header">
+    <h1>Get Involved</h1>
+    <p>Connect with the Yo Soy STEM team at San Diego City College.</p>
+  </div>
+
+  <div class="page-body">
+    <div class="contact-layout">
+
+      <div class="contact-info-box fade-in">
+        <h2>Contact Information</h2>
+        <div class="c-detail">
+          <div class="ico">&#128222;</div>
+          <div>
+            <strong>Phone</strong>
+            <span><a href="tel:+16193883400">(619) 388-3400</a></span>
+          </div>
+        </div>
+        <div class="c-detail">
+          <div class="ico">&#128247;</div>
+          <div>
+            <strong>Instagram</strong>
+            <span><a href="https://www.instagram.com/sdcityhsi" target="_blank" rel="noopener">@sdcityhsi</a></span>
+          </div>
+        </div>
+        <div class="c-detail">
+          <div class="ico">&#128205;</div>
+          <div>
+            <strong>Address</strong>
+            <span>San Diego City College<br>1313 Park Boulevard<br>San Diego, CA 92101-4787</span>
+          </div>
+        </div>
+        <div class="c-detail">
+          <div class="ico">&#128279;</div>
+          <div>
+            <strong>Official HSI Page</strong>
+            <span>
+              <a href="https://www.sdcity.edu/about/leadership/student-services/hsi.aspx"
+                target="_blank" rel="noopener">
+                sdcity.edu &rsaquo; HSI Program
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-box fade-in">
+        <h3>Send Us a Message</h3>
+        <p class="sub">We typically respond within 1–2 business days.</p>
+
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" placeholder="First name" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" placeholder="Last name" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" placeholder="(619) 555-1234" />
+          </div>
+          <div class="form-group">
+            <label for="role">I am a… *</label>
+            <select id="role" required>
+              <option value="" disabled selected>Select your role</option>
+              <option>Current SDCC Student</option>
+              <option>Prospective Student</option>
+              <option>Faculty / Staff</option>
+              <option>Community Member</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="interest">Service of Interest</label>
+            <select id="interest">
+              <option value="" disabled selected>Select a service (optional)</option>
+              <option>Academic Counseling</option>
+              <option>Tutoring</option>
+              <option>STEM Bridge Program</option>
+              <option>Paid STEM Internships</option>
+              <option>Professional Development</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" placeholder="How can we help you?" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message &rsaquo;</button>
+        </form>
+
+        <div id="formSuccess" style="display:none; text-align:center; padding:28px;">
+          <div style="font-size:2.5rem; margin-bottom:10px;">&#10004;&#65039;</div>
+          <h3 style="font-weight:800; color:var(--red); margin-bottom:8px;">Message Sent!</h3>
+          <p style="color:var(--gray-mid);">The Yo Soy STEM team will be in touch within 1–2 business days.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="contact-strip">
+    <div class="c-item"><div class="icon">&#128222;</div><div><div class="label">Phone</div><div class="value"><a href="tel:+16193883400">(619) 388-3400</a></div></div></div>
+    <div class="c-item"><div class="icon">&#128247;</div><div><div class="label">Instagram</div><div class="value"><a href="https://www.instagram.com/sdcityhsi" target="_blank" rel="noopener">@sdcityhsi</a></div></div></div>
+    <div class="c-item"><div class="icon">&#128205;</div><div><div class="label">Address</div><div class="value">1313 Park Blvd, San Diego, CA 92101-4787</div></div></div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name"><div class="logo-sq">YS</div>Yo Soy STEM</div>
+        <p>A Title III HSI STEM Grant program at San Diego City College.</p>
+        <div class="social-links"><a href="https://www.instagram.com/sdcityhsi" target="_blank" rel="noopener" class="social-link">&#128247;</a></div>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul>
+        <li><a href="programs.html">Academic Counseling</a></li>
+        <li><a href="programs.html">Tutoring</a></li>
+        <li><a href="programs.html">STEM Bridge Program</a></li>
+        <li><a href="programs.html">Paid STEM Internships</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>About</h4><ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html">Our Team</a></li>
+        <li><a href="events.html">Events</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="tel:+16193883400">(619) 388-3400</a></li>
+        <li><a href="https://www.instagram.com/sdcityhsi" target="_blank" rel="noopener">@sdcityhsi</a></li>
+        <li><a href="https://www.sdcity.edu/about/leadership/student-services/hsi.aspx" target="_blank" rel="noopener">HSI at SDCC</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Yo Soy STEM &mdash; San Diego City College.</p>
+      <div style="display:flex;gap:16px;"><a href="#">Privacy</a><a href="#">Accessibility</a></div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

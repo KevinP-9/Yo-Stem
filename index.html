@@ -4,305 +4,1806 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yo Soy STEM | San Diego City College</title>
-  <meta name="description" content="Yo Soy STEM is a Title III HSI STEM Grant program at San Diego City College designed to expand educational opportunities for Hispanic and low-income students pursuing STEM degrees." />
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="description" content="Yo Soy STEM is a Title III HSI STEM Grant program at San Diego City College supporting Hispanic and low-income students in STEM." />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 15px;
+  color: #333;
+  background: #fff;
+  line-height: 1.6;
+}
+a { color: #7c2324; text-decoration: underline; }
+a:hover { color: #4a0d18; }
+img { max-width: 100%; display: block; }
+ul { list-style: disc; padding-left: 20px; }
+
+/* ============================================================
+   ① TOP UTILITY BAR  — dark charcoal, right-aligned
+   ============================================================ */
+.top-utility {
+  background: #7c2324;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 120px;
+  height: 60px;
+  gap: 0;
+}
+.top-utility .util-links {
+  display: flex;
+  align-items: center;
+  height: 80%;
+  gap: 10px;
+}
+.top-utility .util-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 0 14px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.top-utility .util-links a:hover { background-color:#fff; color: #000; }
+.top-utility .util-links a.btn-dark {
+  background: #000;
+  color: #fff;
+  border-color: #444;
+}
+.top-utility .util-links a.btn-dark:hover { background: #fff; color: #000; }
+.top-utility .search-wrap {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 35px;
+}
+.top-utility .search-wrap input {
+  background: #fff;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  font-size: 0.78rem;
+  width: 250px;
+  height: 100%;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+.top-utility .search-wrap button {
+  background: #fff;
+  border: none;
+  color: #fff;
+  padding: 0 10px;
+  cursor: pointer;
+  height: 100%;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+.top-utility .search-wrap button:hover { background: #7c2324; }
+
+/* ============================================================
+   ② LOGO BAR — white background, big serif college name
+   ============================================================ */
+.logo-bar {
+  background: #fff;
+  padding: 15px 100px 15px;
+  border-bottom: 1px solid #ddd;
+}
+.logo-bar .college-name {
+  font-family: 'EB Garamond', 'Times New Roman', Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: #7c2324;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  line-height: 1;
+  text-decoration: none;
+  display: inline-block;
+}
+.logo-bar .college-name:hover { color: #4a0d18; text-decoration: none; }
+
+/* ============================================================
+   ③ MAIN NAV BAR — dark maroon, white text
+   ============================================================ */
+.main-nav {
+  background: #7c2324;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.main-nav ul li { position: relative; }
+.main-nav ul li a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 14px 22px;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.main-nav ul li a:hover { background: rgba(0,0,0,0.2); color: #fff; text-decoration: none; }
+.main-nav ul li a .arrow {
+  font-size: 0.6rem;
+  opacity: 0.75;
+  margin-top: 1px;
+}
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+.breadcrumb {
+  background: #fff;
+  padding: 40px 0 20px 100px ;
+  font-size: 0.82rem;
+  color: #4a0d18;
+}
+.breadcrumb a { color: #333; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb .sep { margin: 0 8px; color: #999; }
+
+/* ============================================================
+   PAGE LAYOUT — sidebar + content
+   ============================================================ */
+.page-wrap {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 24px 20px 20px;
+  gap: 0;
+}
+
+/* ============================================================
+   LEFT SIDEBAR — matches Image 2 exactly
+   ============================================================ */
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  margin-right: 50px;
+}
+
+/* Plain text nav links — no box, no background */
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+}
+.sidebar-nav li { margin-bottom: 4px; }
+.sidebar-nav li a {
+  display: block;
+  font-size: 0.88rem;
+  color: #7a1728;
+  text-decoration: underline;
+  padding: 2px 0;
+  line-height: 1.45;
+}
+.sidebar-nav li a:hover { color: #4a0d18; }
+.sidebar-nav li a.active {
+  font-weight: 700;
+  color: #4a0d18;
+}
+
+/* Contact Us box — maroon header, white body with border */
+.sidebar-contact {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.sidebar-contact .contact-head {
+  background: #7c2324;
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 10px 16px;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+.sidebar-contact .contact-body {
+  background: #fff;
+  padding: 16px;
+  font-size: 0.85rem;
+  color: #333;
+  text-align: center;
+  line-height: 1.7;
+}
+.sidebar-contact .contact-body strong {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 2px;
+}
+.sidebar-contact .contact-body .phone-row {
+  margin: 12px 0 10px;
+  font-size: 0.88rem;
+}
+.sidebar-contact .contact-body .phone-row a {
+  color: #7a1728;
+}
+.sidebar-contact .contact-body .dir-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 6px 0;
+  font-size: 0.84rem;
+}
+.sidebar-contact .contact-body .dir-link a { color: #7a1728; }
+.sidebar-contact .contact-body .dir-icon { font-size: 1rem; }
+
+
+/* ============================================================
+   MAIN CONTENT AREA
+   ============================================================ */
+   .main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.main-content h1 {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #7a1728;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.main-content h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #7a1728;
+  margin: 32px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #7a1728;
+}
+.main-content h2:first-of-type { margin-top: 0; }
+
+.main-content h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #222;
+  margin: 16px 0 8px;
+}
+
+.main-content p {
+  font-size: 0.93rem;
+  color: #444;
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+
+.main-content ul li {
+  font-size: 0.93rem;
+  color: #444;
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+/* ---- Intro quote block ---- */
+.intro-box {
+  background: #f9f6f6;
+  border-left: 4px solid #7a1728;
+  padding: 18px 22px;
+  margin-bottom: 24px;
+  border-radius: 0 3px 3px 0;
+}
+.intro-box blockquote {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.intro-box p { margin-bottom: 8px; }
+.intro-box p:last-child { margin-bottom: 0; }
+
+/* ---- 3-col service cards ---- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.card {
+  border: 1px solid #ddd;
+  border-top: 3px solid #7a1728;
+  border-radius: 2px;
+  padding: 18px 16px;
+  background: #fff;
+  transition: box-shadow 0.2s;
+}
+.card:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
+.card .card-icon { font-size: 1.4rem; margin-bottom: 8px; }
+.card h3 { font-size: 0.93rem; margin: 0 0 8px; color: #222; }
+.card p { font-size: 0.84rem; color: #555; line-height: 1.55; margin-bottom: 10px; }
+.card .free-badge {
+  display: inline-block;
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+.card a.card-link {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #7a1728;
+  margin-top: 6px;
+}
+
+/* ---- CTA button ---- */
+.btn-red {
+  display: inline-block;
+  background: #7a1728;
+  color: #fff !important;
+  text-decoration: none !important;
+  padding: 9px 20px;
+  border-radius: 2px;
+  font-size: 0.87rem;
+  font-weight: 700;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+.btn-red:hover { background: #4a0d18 !important; }
+
+.btn-outline {
+  display: inline-block;
+  background: #fff;
+  color: #7a1728 !important;
+  text-decoration: none !important;
+  padding: 8px 18px;
+  border-radius: 2px;
+  border: 1.5px solid #7a1728;
+  font-size: 0.87rem;
+  font-weight: 700;
+  transition: all 0.2s;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+.btn-outline:hover { background: #7a1728; color: #fff !important; }
+
+/* ---- Makerspace block ---- */
+.makerspace-header-block {
+  background: #7a1728;
+  color: #fff;
+  padding: 16px 22px;
+  border-radius: 3px 3px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.makerspace-header-block h3 { color: #fff; margin: 0; font-size: 1rem; font-weight: 700; }
+.makerspace-header-block .location-pill {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+.makerspace-body-block {
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 3px 3px;
+  padding: 22px;
+  background: #fff;
+  margin-bottom: 8px;
+}
+.makerspace-body-block p { font-size: 0.92rem; }
+
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 16px 0;
+}
+.eq-card {
+  background: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  padding: 14px 16px;
+}
+.eq-card .eq-icon { font-size: 1.4rem; margin-bottom: 6px; }
+.eq-card h4 { font-size: 0.9rem; font-weight: 700; color: #222; margin-bottom: 5px; }
+.eq-card p { font-size: 0.82rem; color: #555; margin: 0; line-height: 1.5; }
+.tag-appt {
+  display: inline-block;
+  background: #fff3e0;
+  color: #e65100;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin-top: 6px;
+}
+.tag-coming {
+  display: inline-block;
+  background: #e3f2fd;
+  color: #1565c0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin-top: 6px;
+}
+.tag-dropin {
+  display: inline-block;
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin-top: 6px;
+}
+
+.hours-row {
+  background: #fdf6f7;
+  border: 1px solid #f0d0d5;
+  border-radius: 2px;
+  padding: 14px 18px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+.hours-row .hours-label {
+  font-weight: 700;
+  font-size: 0.83rem;
+  color: #7a1728;
+  white-space: nowrap;
+  min-width: 110px;
+  margin-top: 2px;
+}
+.hours-row .hours-detail {
+  font-size: 0.85rem;
+  color: #444;
+  line-height: 1.75;
+}
+.hours-row .hours-detail strong { color: #222; }
+
+/* ---- HSI Designation ---- */
+.hsi-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 2px;
+  margin-bottom: 8px;
+}
+.hsi-badge {
+  background: #7a1728;
+  color: #fff;
+  border-radius: 2px;
+  width: 80px;
+  min-width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.7rem;
+  line-height: 1.3;
+  padding: 6px;
+}
+.hsi-badge .badge-icon { font-size: 1.4rem; display: block; margin-bottom: 3px; }
+.hsi-row p { margin-bottom: 10px; }
+
+/* ---- Bridge program ---- */
+.bridge-box {
+  border: 1px solid #ddd;
+  border-left: 4px solid #7a1728;
+  padding: 20px 22px;
+  background: #fff;
+  border-radius: 0 2px 2px 0;
+  margin-bottom: 8px;
+}
+.bridge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 16px;
+  margin: 12px 0 16px;
+  list-style: none;
+  padding: 0;
+}
+.bridge-grid li {
+  font-size: 0.88rem;
+  color: #333;
+  display: flex;
+  gap: 7px;
+  align-items: flex-start;
+}
+.bridge-grid li::before {
+  content: '✓';
+  color: #7a1728;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.stipend-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  color: #e65100;
+  font-weight: 700;
+  font-size: 0.87rem;
+  padding: 7px 14px;
+  border-radius: 2px;
+  margin-bottom: 14px;
+}
+
+/* ---- Coming soon boxes ---- */
+.coming-box {
+  background: #f8f8f8;
+  border: 1px dashed #ccc;
+  border-radius: 2px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.coming-box h3 { font-size: 0.95rem; color: #333; margin-bottom: 6px; }
+.coming-box p { font-size: 0.87rem; color: #666; margin-bottom: 10px; }
+
+/* ---- Events ---- */
+.event-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  background: #fff;
+  transition: box-shadow 0.2s;
+}
+.event-item:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+.event-date-box {
+  background: #7a1728;
+  color: #fff;
+  border-radius: 2px;
+  min-width: 50px;
+  padding: 7px 9px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.event-date-box .day { font-size: 1.4rem; font-weight: 700; line-height: 1; }
+.event-date-box .mon { font-size: 0.63rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; opacity: 0.85; margin-top: 1px; }
+.event-body h4 { font-size: 0.93rem; font-weight: 700; color: #222; margin-bottom: 4px; }
+.event-body .evt-meta { font-size: 0.8rem; color: #666; margin-bottom: 5px; display: flex; gap: 16px; flex-wrap: wrap; }
+.event-body p { font-size: 0.84rem; color: #555; margin: 0; }
+.evt-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 7px; }
+.evt-tag {
+  font-size: 0.69rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+.tag-blue  { background: #e3f2fd; color: #1565c0; }
+.tag-green { background: #e8f5e9; color: #2e7d32; }
+.tag-orange{ background: #fff3e0; color: #e65100; }
+.tag-purple{ background: #f3e5f5; color: #6a1b9a; }
+
+/* ---- Team grid ---- */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.team-card {
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  padding: 16px 12px;
+  text-align: center;
+  background: #fff;
+  transition: box-shadow 0.2s;
+}
+.team-card:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+.team-avatar {
+  width: 70px; height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 10px;
+  border: 2px solid #ddd;
+  background: #7a1728;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+.team-avatar img {
+  width: 70px; height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+.team-card h4 { font-size: 0.87rem; font-weight: 700; color: #222; margin-bottom: 3px; }
+.team-card .role { font-size: 0.77rem; color: #7a1728; font-weight: 600; }
+.team-label {
+  font-size: 0.77rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #666;
+  margin: 22px 0 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* ---- YouTube embed ---- */
+.yt-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 2px;
+  margin: 12px 0;
+  background: #000;
+}
+.yt-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+/* ---- Counseling CTA strip ---- */
+.cta-strip {
+  background: #7a1728;
+  padding: 18px 22px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.cta-strip h3 { color: #fff; font-size: 0.97rem; font-weight: 700; margin: 0 0 3px; }
+.cta-strip p { color: rgba(255,255,255,0.85); font-size: 0.85rem; margin: 0; }
+.btn-white {
+  display: inline-block;
+  background: #fff;
+  color: #7a1728 !important;
+  text-decoration: none !important;
+  padding: 9px 20px;
+  border-radius: 2px;
+  font-size: 0.87rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.btn-white:hover { background: #f5e0e3 !important; }
+
+/* ============================================================
+   FOOTER — matches Image 3 exactly
+   Dark gray, multi-column, SDCC logo, social icons, badges
+   ============================================================ */
+.site-footer {
+  background: #555;
+  color: rgba(255,255,255,0.8);
+  padding: 44px 30px 0;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Left col: logo + address + social */
+.ft-brand .sdcc-logo-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.ft-brand .sdcc-logo-text .logo-icon {
+  width: 52px; height: 52px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="%23fff" opacity="0.15"/><text x="50%25" y="55%25" dominant-baseline="middle" text-anchor="middle" font-size="20" fill="white" font-family="Arial" font-weight="bold">SD</text></svg>') center/contain no-repeat;
+  flex-shrink: 0;
+}
+/* Use actual SDCC footer logo style */
+.ft-brand-name {
+  margin-bottom: 14px;
+}
+.ft-brand-name .brand-line1 {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: block;
+  line-height: 1.3;
+}
+.ft-brand-name .brand-line2 {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 2px;
+  font-variant: small-caps;
+  display: block;
+  line-height: 1.1;
+}
+.ft-brand address {
+  font-style: normal;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.social-icons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.social-icons a {
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.social-icons a:hover { background: rgba(255,255,255,0.25); }
+.ft-copyright {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.6);
+}
+.ft-copyright a { color: rgba(255,255,255,0.6); }
+
+/* Middle/right cols: link columns */
+.ft-links-col h4 {
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  display: none; /* hidden — SDCC footer doesn't show column headers */
+}
+.ft-links-col ul { list-style: none; padding: 0; margin: 0; }
+.ft-links-col ul li { margin-bottom: 11px; }
+.ft-links-col ul li a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: color 0.2s;
+}
+.ft-links-col ul li a:hover { color: #fff; }
+
+/* Bottom section: college system + badges */
+.footer-bottom-section {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 28px 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-college-links ul { list-style: none; padding: 0; margin: 0; }
+.footer-college-links ul li { margin-bottom: 8px; }
+.footer-college-links ul li a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+.footer-college-links ul li a:hover { color: #fff; }
+.footer-badges {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.footer-badges .badge-circle {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.2;
+  border: 2px solid rgba(255,255,255,0.2);
+  padding: 6px;
+}
+
+/* Non-discrimination disclaimer */
+.footer-disclaimer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 20px 0 24px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+.footer-disclaimer a { color: rgba(255,255,255,0.6); }
+.footer-disclaimer .complaint-link {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.8rem;
+}
+.footer-disclaimer .complaint-link a {
+  color: rgba(255,255,255,0.7);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .page-wrap { flex-direction: column; }
+  .sidebar { width: 100%; margin-right: 0; margin-bottom: 24px; }
+  .sidebar-nav { display: flex; gap: 8px 20px; flex-wrap: wrap; }
+  .cards-grid { grid-template-columns: 1fr 1fr; }
+  .equipment-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .footer-bottom-section { grid-template-columns: 1fr; }
+  .footer-badges { justify-content: flex-start; }
+}
+@media (max-width: 600px) {
+  .top-utility .util-links a { padding: 0 8px; font-size: 0.65rem; }
+  .logo-bar .college-name { font-size: 1.6rem; }
+  .main-nav ul li a { padding: 12px 12px; font-size: 0.8rem; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .equipment-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .bridge-grid { grid-template-columns: 1fr; }
+  .hsi-row { flex-direction: column; }
+  .footer-top { grid-template-columns: 1fr; gap: 20px; }
+  .cta-strip { flex-direction: column; align-items: flex-start; }
+}
+
+  </style>
 </head>
 <body>
 
-  <!-- TOP BAR -->
-  <div class="top-bar">
-    <a href="https://www.sdcity.edu" target="_blank" rel="noopener">SDCC Home</a>
-    <a href="https://www.sdcity.edu/about/leadership/student-services/hsi.aspx" target="_blank" rel="noopener">Official HSI Page</a>
-    <a href="contact.html">Contact Us</a>
+<!-- ============================================================
+     ① TOP UTILITY BAR
+     ============================================================ -->
+<div class="top-utility">
+  <nav class="util-links">
+    <a href="https://www.sdcity.edu/_resources/includes/header.html">COLLEGES <span style="font-size:0.6rem">▼</span></a>
+    <a href="#">RESOURCES <span style="font-size:0.6rem">▼</span></a>
+    <a href="https://myportal.sdccd.edu" target="_blank" rel="noopener" class="btn-dark">MYSDCCD</a>
+    <a href="https://sdccd.instructure.com/login" target="_blank" rel="noopener" class="btn-dark">CANVAS</a>
+    <a href="https://www.sdccd.edu/students/class-search/search.html" target="_blank" rel="noopener" class="btn-dark">CLASS SCHEDULE</a>
+    <a href="https://www.sdccd.edu/apply/" target="_blank" rel="noopener" class="btn-dark">APPLY</a>
+  </nav>
+  <div class="search-wrap">
+    <input type="text" placeholder="Search..." aria-label="Search the site" />
+    <button aria-label="Search">&#128269;</button>
   </div>
+</div>
 
-  <!-- NAVBAR -->
-  <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <a href="index.html" class="nav-brand">
-      <div class="brand-logo">YS</div>
-      <div class="brand-text">
-        <span class="college">San Diego City College</span>
-        <span class="program"></span>
-      </div>
-    </a>
+<!-- ============================================================
+     ② LOGO BAR — San Diego City College in serif
+     ============================================================ -->
+<div class="logo-bar">
+  <a href="https://www.sdcity.edu" class="college-name">San Diego City College</a>
+</div>
 
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="programs.html">Programs &amp; Services</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="contact.html" class="nav-cta">Get Involved</a></li>
+<!-- ============================================================
+     ③ MAIN NAV BAR — dark maroon
+     ============================================================ -->
+<nav class="main-nav" role="navigation" aria-label="Main navigation">
+  <ul>
+    <li><a href="https://www.sdcity.edu/about/index.aspx">About <span class="arrow">▼</span></a></li>
+    <li><a href="https://www.sdcity.edu/academics/index.aspx">Academics <span class="arrow">▼</span></a></li>
+    <li><a href="https://www.sdcity.edu/future-students/pathways/index.aspx">Future Students <span class="arrow">▼</span></a></li>
+    <li><a href="https://www.sdcity.edu/life-at-city/">Life at City <span class="arrow">▼</span></a></li>
+    <li><a href="https://www.sdcity.edu/community/index.aspx">Community <span class="arrow">▼</span></a></li>
+    <li><a href="https://www.sdcity.edu/students/services/index.aspx">Student Services</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================
+     BREADCRUMB
+     ============================================================ -->
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://www.sdcity.edu">Home</a>
+  <span class="sep">/</span>
+  <a href="https://www.sdcity.edu/about/">About</a>
+  <span class="sep">/</span>
+  <a href="https://www.sdcity.edu/about/leadership/">Leadership</a>
+  <span class="sep">/</span>
+  <a href="https://www.sdcity.edu/about/leadership/student-services/">Office of Student Services</a>
+  <span class="sep">/</span>
+  <strong>Yo Soy STEM</strong>
+</div>
+
+<!-- ============================================================
+     TWO-COLUMN: SIDEBAR + MAIN CONTENT
+     ============================================================ -->
+<div class="page-wrap">
+
+  <!-- ---- LEFT SIDEBAR ---- -->
+  <aside class="sidebar" aria-label="Section navigation">
+
+    <!-- Plain text nav links — no boxes, just underlined red links -->
+    <ul class="sidebar-nav">
+      <li><a href="https://www.sdcity.edu/about/leadership/student-services/dreamer.aspx">SUBIR Dreamer Resource Center</a></li>
+      <li><a href="https://www.sdcity.edu/about/leadership/student-services/hsi.aspx" class="active">Hispanic-Serving Institution</a></li>
+      <li><a href="https://www.sdcity.edu/about/leadership/student-services/complaint-process.aspx">Complaint Process</a></li>
+      <li><a href="https://www.sdcity.edu/about/leadership/student-services/student_affairs/index.aspx">Student Affairs</a></li>
     </ul>
 
-    <button class="hamburger" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+    <!-- Contact Us box — maroon header, white body -->
+    <div class="sidebar-contact">
+      <div class="contact-head">Contact Us</div>
+      <div class="contact-body">
+        <strong>San Diego City College</strong>
+        1313 Park Boulevard<br>
+        San Diego, CA 92101-4787
+        <div class="phone-row">
+          &#128222; <a href="tel:6193883400">619-388-3400</a>
+        </div>
+        <div class="dir-link">
+          <span class="dir-icon">&#128101;</span>
+          <a href="https://www.sdcity.edu/directory/index.aspx" target="_blank" rel="noopener">Faculty/Staff Directory</a>
+        </div>
+        <div class="dir-link">
+          <span class="dir-icon">&#127970;</span>
+          <a href="https://www.sdcity.edu/directory/" target="_blank" rel="noopener">Offices Directory</a>
+        </div>
+      </div>
+    </div>
 
-  <!-- BREADCRUMB -->
-  <div class="breadcrumb-bar">
-    <a href="https://www.sdcity.edu" target="_blank" rel="noopener">Home</a>
-    <span class="sep">&rsaquo;</span>
-    <a href="#">About</a>
-    <span class="sep">&rsaquo;</span>
-    <a href="#">Leadership</a>
-    <span class="sep">&rsaquo;</span>
-    <a href="#">Office of Student Services</a>
-    <span class="sep">&rsaquo;</span>
-    <strong>Yo Soy STEM</strong>
+  </aside>
+
+  <!-- ---- MAIN CONTENT ---- -->
+  <main class="main-content" id="main-content">
+
+  <style>
+    /* ── Section headings ── */
+    .mc-h2 {
+      font-size: 1.18rem; font-weight: 700; color: #7c2324;
+      margin: 38px 0 16px; padding-bottom: 8px;
+      border-bottom: 2px solid #7c2324;
+      display: flex; align-items: center; gap: 9px;
+    }
+    .mc-h2 .sh-icon {
+      width: 32px; height: 32px; background: #7c2324; color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; flex-shrink: 0;
+    }
+
+    /* ── Page nav ── */
+    .page-nav {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      justify-content: center;
+      background: #fdf5f5; border: 1px solid #f0cece;
+      border-radius: 8px; padding: 14px 18px; margin-bottom: 24px;
+    }
+    .page-nav a {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: #fff; border: 1px solid #e8b8b8;
+      color: #7c2324 !important; text-decoration: none !important;
+      padding: 5px 12px; border-radius: 20px;
+      font-size: 0.78rem; font-weight: 600;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+    .page-nav a:hover { background: #7c2324; color: #fff !important; border-color: #7c2324; }
+    .page-nav-label {
+      font-size: 0.73rem; font-weight: 800; color: #aaa;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      width: 100%; margin-bottom: 4px; text-align: center;
+    }
+
+    /* ── Hero ── */
+    .prog-hero {
+      background: linear-gradient(135deg, #7c2324 0%, #a83030 55%, #c0392b 100%);
+      border-radius: 8px; padding: 28px 30px; margin-bottom: 6px;
+      color: #fff; position: relative; overflow: hidden;
+    }
+    .prog-hero .hero-deco {
+      position: absolute; right: 20px; top: 50%;
+      transform: translateY(-50%);
+      display: flex; gap: 8px; align-items: center;
+      opacity: 0.35;
+    }
+    .prog-hero .hero-deco span {
+      font-size: 2rem; display: block;
+      filter: brightness(0) invert(1);
+    }
+    .prog-hero h1 {
+      font-family: "EB Garamond", Georgia, serif; font-size: 2.1rem; font-weight: 600;
+      color: #fff; margin-bottom: 4px; border: none; padding: 0;
+    }
+    .prog-hero .hero-sub { font-size: 0.93rem; color: rgba(255,255,255,0.92); margin-bottom: 16px; }
+    .prog-hero .hero-email {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.45);
+      color: #fff; text-decoration: none;
+      padding: 7px 16px; border-radius: 4px; font-size: 0.85rem; font-weight: 600;
+      transition: background 0.2s;
+    }
+    .prog-hero .hero-email:hover { background: rgba(255,255,255,0.3); }
+
+    /* ── About ── */
+    .about-box {
+      background: #fff; border: 1px solid #e8e8e8; border-radius: 8px;
+      padding: 24px; margin-bottom: 6px;
+    }
+    .about-box .quote-strip {
+      background: #fdf5f5; border-left: 5px solid #7c2324;
+      border-radius: 0 6px 6px 0; padding: 14px 18px;
+      margin-bottom: 18px; font-style: italic; font-size: 0.88rem; color: #555; line-height: 1.75;
+    }
+    .about-box p { font-size: 0.93rem; color: #444; margin-bottom: 12px; line-height: 1.75; }
+    .about-box strong { color: #7c2324; }
+    .goals-chips { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 18px; }
+    .g-chip {
+      background: linear-gradient(135deg, #fdf5f5, #fff);
+      border: 1px solid #f0cece; border-radius: 8px;
+      padding: 16px 14px; text-align: center; font-size: 0.83rem; color: #444; line-height: 1.55;
+    }
+    .g-chip .gi { font-size: 1.7rem; display: block; margin-bottom: 7px; }
+    .g-chip strong { color: #7c2324; display: block; margin-bottom: 4px; font-size: 0.85rem; }
+
+    /* ── Services ── */
+    .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 13px; }
+    .svc-card {
+      border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px 16px;
+      background: #fff; position: relative; overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.18s;
+    }
+    .svc-card::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #7c2324, #c0392b); border-radius: 8px 8px 0 0;
+    }
+    .svc-card:hover { box-shadow: 0 6px 20px rgba(124,35,36,0.13); transform: translateY(-3px); }
+    .svc-card .si { font-size: 1.9rem; display: block; margin-bottom: 10px; }
+    .svc-card h3 { font-size: 0.94rem; font-weight: 700; color: #222; margin-bottom: 7px; }
+    .svc-card p { font-size: 0.83rem; color: #555; line-height: 1.6; margin-bottom: 10px; }
+    .free-pill { display: inline-block; background: #e8f5e9; color: #2e7d32; font-size: 0.69rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin-bottom: 8px; }
+    .svc-link { display: inline-block; font-size: 0.82rem; font-weight: 700; color: #7c2324; text-decoration: none; border-bottom: 1.5px solid transparent; transition: border-color 0.2s; }
+    .svc-link:hover { border-bottom-color: #7c2324; }
+
+    /* CTA banner */
+    .cta-bann {
+      background: linear-gradient(100deg, #7c2324 0%, #a02e30 100%);
+      border-radius: 8px; padding: 18px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 14px; flex-wrap: wrap; margin-bottom: 6px;
+    }
+    .cta-bann h3 { color: #fff; font-size: 0.94rem; font-weight: 700; margin: 0 0 3px; }
+    .cta-bann p { color: rgba(255,255,255,0.85); font-size: 0.83rem; margin: 0; }
+    .btn-wh {
+      display: inline-block; background: #fff; color: #7c2324 !important;
+      text-decoration: none !important; padding: 10px 20px; border-radius: 6px;
+      font-size: 0.86rem; font-weight: 700; white-space: nowrap; flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .btn-wh:hover { background: #f9e8e8 !important; }
+
+    /* ── Makerspace ── */
+    .ms-wrap { border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; margin-bottom: 6px; }
+    .ms-topbar {
+      background: linear-gradient(100deg, #7c2324, #9b2d2e); color: #fff;
+      padding: 16px 24px; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    }
+    .ms-topbar h3 { color: #fff; margin: 0; font-size: 1.04rem; font-weight: 700; }
+    .ms-loc {
+      background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.4);
+      color: #fff; font-size: 0.79rem; font-weight: 600; padding: 5px 13px; border-radius: 20px;
+    }
+    .ms-intro-grid {
+      display: grid; grid-template-columns: 1fr 320px; gap: 24px;
+      padding: 22px 24px 0; align-items: start;
+    }
+    .ms-intro-grid p { font-size: 0.92rem; color: #444; line-height: 1.75; margin-bottom: 10px; }
+    .ms-intro-grid strong { color: #7c2324; }
+    .ms-photo-box {
+      border-radius: 8px; border: 1px solid #e0e0e0; overflow: hidden;
+      background: linear-gradient(135deg, #f5e8e8, #fdf0f0);
+      height: 200px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center; padding: 20px;
+    }
+    .ms-photo-box .pi { font-size: 2.6rem; margin-bottom: 8px; }
+    .ms-photo-box p { margin: 0; font-size: 0.8rem; color: #9e6666; font-weight: 600; }
+    .ms-body { padding: 20px 24px; }
+
+    .ideas-bar {
+      background: #fdf5f5; border: 1px solid #f0cece; border-radius: 8px;
+      padding: 15px 18px; margin-bottom: 20px;
+    }
+    .ideas-title { font-weight: 700; font-size: 0.88rem; color: #7c2324; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .ideas-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .ic {
+      background: #fff; border: 1px solid #e8b8b8; border-radius: 20px;
+      padding: 4px 12px; font-size: 0.79rem; color: #444;
+      display: flex; align-items: center; gap: 5px; transition: background 0.15s;
+    }
+    .ic:hover { background: #fdf0f0; }
+
+    .eq-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 20px; }
+    .eq-card {
+      background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px;
+      transition: box-shadow 0.2s;
+    }
+    .eq-card:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.09); }
+    .eq-card.hi { border-color: #7c2324; border-width: 1.5px; }
+    .eq-card .eq-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+    .eq-card .eq-emoji { font-size: 1.7rem; flex-shrink: 0; line-height: 1; }
+    .eq-card h4 { font-size: 0.88rem; font-weight: 700; color: #222; margin-bottom: 4px; }
+    .eq-card p { font-size: 0.8rem; color: #555; line-height: 1.55; margin: 0 0 8px; }
+    .eq-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+    .bg  { background: #e8f5e9; color: #2e7d32; font-size: 0.67rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+    .bo  { background: #fff3e0; color: #e65100; font-size: 0.67rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+    .bb  { background: #e3f2fd; color: #1565c0; font-size: 0.67rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+    .bgr { background: #f5f5f5; color: #555; font-size: 0.67rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+
+    .rules-box {
+      background: #f9f9f9; border: 1px solid #e8e8e8; border-radius: 8px;
+      padding: 18px 20px; margin-bottom: 18px;
+    }
+    .rules-box h4 { font-size: 0.92rem; font-weight: 700; color: #222; margin-bottom: 10px; }
+    .rules-box ul { list-style: disc; padding-left: 20px; }
+    .rules-box ul li { font-size: 0.86rem; color: #444; margin-bottom: 9px; line-height: 1.65; }
+    .rules-box ul li em { font-style: italic; color: #7c2324; font-weight: 600; }
+
+    .btn-book-blue {
+      display: block; width: fit-content; margin: 0 auto 18px;
+      background: #1a73c8; color: #fff !important; text-decoration: none !important;
+      padding: 13px 34px; border-radius: 8px; font-size: 0.95rem; font-weight: 700;
+      text-align: center; transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 3px 10px rgba(26,115,200,0.3);
+    }
+    .btn-book-blue:hover { background: #1558a3 !important; transform: translateY(-1px); }
+    .ms-contact { border-top: 1px solid #eee; padding-top: 14px; font-size: 0.84rem; color: #555; line-height: 1.75; }
+    .ms-contact strong { color: #222; }
+    .ms-contact a { color: #7c2324; }
+    .ms-note { margin-top: 6px; font-size: 0.79rem; color: #888; }
+    .ms-note a { color: #1a73c8; font-weight: 700; }
+
+    /* ── Events ── */
+    .month-hdr {
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #999;
+      margin: 20px 0 9px; padding-bottom: 5px; border-bottom: 1px solid #f0f0f0;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .month-hdr::before { content: ""; display: inline-block; width: 18px; height: 2px; background: #7c2324; border-radius: 2px; }
+    .evt-row {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 14px 16px; border: 1px solid #eee; border-radius: 8px;
+      margin-bottom: 9px; background: #fff;
+      transition: box-shadow 0.18s, transform 0.15s, border-color 0.15s;
+    }
+    .evt-row:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); transform: translateY(-2px); border-color: #f0cece; }
+    .evt-cal {
+      background: #7c2324; color: #fff; border-radius: 6px;
+      min-width: 48px; padding: 7px 9px; text-align: center; flex-shrink: 0;
+    }
+    .evt-cal .cd { font-size: 1.4rem; font-weight: 700; line-height: 1; }
+    .evt-cal .cm { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; opacity: 0.85; }
+    .evt-info h4 { font-size: 0.92rem; font-weight: 700; color: #222; margin-bottom: 3px; }
+    .evt-info .em { font-size: 0.79rem; color: #777; margin-bottom: 5px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .evt-info p { font-size: 0.83rem; color: #555; margin: 0; }
+    .evt-chips { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 7px; }
+    .ch { font-size: 0.67rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; }
+    .chb { background: #e3f2fd; color: #1565c0; }
+    .chg { background: #e8f5e9; color: #2e7d32; }
+    .cho { background: #fff3e0; color: #e65100; }
+    .chp { background: #f3e5f5; color: #6a1b9a; }
+
+    /* ── Bridge ── */
+    .bridge-sec {
+      border: 1px solid #e0e0e0; border-left: 5px solid #7c2324;
+      border-radius: 0 8px 8px 0; padding: 22px 24px;
+      background: #fff; margin-bottom: 6px;
+    }
+    .bridge-sec h3 { font-size: 1.01rem; font-weight: 700; color: #222; margin-bottom: 10px; }
+    .bridge-sec p { font-size: 0.92rem; color: #444; margin-bottom: 10px; line-height: 1.75; }
+    .bridge-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; margin: 10px 0 16px; list-style: none; padding: 0; }
+    .bridge-list li { font-size: 0.87rem; color: #333; display: flex; gap: 8px; align-items: flex-start; }
+    .bridge-list li::before { content: "✓"; color: #7c2324; font-weight: 800; flex-shrink: 0; }
+    .stipend {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(90deg, #fff8e1, #fffde7);
+      border: 1px solid #ffe082; color: #c17f00;
+      font-weight: 700; font-size: 0.88rem; padding: 8px 16px;
+      border-radius: 8px; margin-bottom: 14px;
+    }
+
+    /* ── Transfer ── */
+    .vid-placeholder {
+      background: linear-gradient(135deg, #f0f4f8, #e8edf3);
+      border: 2px dashed #b0bec5; border-radius: 8px;
+      padding: 40px 20px; text-align: center; color: #607d8b; margin: 12px 0;
+    }
+    .vid-placeholder .vp-icon { font-size: 3rem; display: block; margin-bottom: 12px; }
+    .vid-placeholder h4 { font-size: 1rem; font-weight: 700; color: #455a64; margin-bottom: 6px; }
+    .vid-placeholder p { font-size: 0.86rem; margin: 0; color: #78909c; }
+
+    /* ── Team ── */
+    .team-sec { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 10px; }
+    .t-card {
+      border: 1px solid #e8e8e8; border-radius: 10px; padding: 20px 14px;
+      text-align: center; background: #fff;
+      transition: box-shadow 0.2s;
+    }
+    .t-card:hover { box-shadow: 0 5px 18px rgba(0,0,0,0.11); }
+    .t-av {
+      width: 74px; height: 74px; border-radius: 50%; margin: 0 auto 11px;
+      border: 3px solid #f0d0d0; background: #7c2324;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.1rem; font-weight: 700; overflow: hidden;
+      flex-shrink: 0;
+    }
+    .t-av img {
+      width: 74px; height: 74px; border-radius: 50%;
+      object-fit: cover; display: block;
+      /* prevent glitch on hover */
+      pointer-events: none; transform: none !important;
+      transition: none !important;
+    }
+    .t-card h4 { font-size: 0.88rem; font-weight: 700; color: #222; margin-bottom: 3px; }
+    .t-card .tr { font-size: 0.77rem; color: #7c2324; font-weight: 600; }
+    .team-div {
+      font-size: 0.73rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: #bbb;
+      margin: 22px 0 10px; padding-bottom: 5px; border-bottom: 1px solid #f0f0f0;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .team-div::before { content: ""; display: inline-block; width: 20px; height: 2px; background: #7c2324; border-radius: 2px; }
+
+    /* ── HSI ── */
+    .hsi-blk {
+      background: linear-gradient(135deg, #fdf5f5, #fff);
+      border: 1px solid #f0cece; border-radius: 10px;
+      padding: 22px 24px; display: flex; gap: 22px; align-items: flex-start; margin-bottom: 6px;
+    }
+    .hsi-icon {
+      background: linear-gradient(135deg, #7c2324, #a83030); color: #fff; border-radius: 8px;
+      width: 80px; min-width: 80px; height: 80px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; font-weight: 700; font-size: 0.68rem; line-height: 1.3; padding: 6px;
+    }
+    .hsi-icon .he { font-size: 1.6rem; display: block; margin-bottom: 4px; }
+    .hsi-blk h3 { font-size: 0.98rem; font-weight: 700; color: #222; margin-bottom: 8px; }
+    .hsi-blk p { font-size: 0.88rem; color: #555; margin-bottom: 10px; line-height: 1.75; }
+
+    /* ── Coming soon ── */
+    .coming-card {
+      background: #fafafa; border: 1.5px dashed #d9d9d9; border-radius: 8px;
+      padding: 22px; text-align: center; margin-bottom: 6px;
+    }
+    .coming-card h3 { font-size: 0.95rem; color: #333; margin-bottom: 7px; }
+    .coming-card p { font-size: 0.85rem; color: #777; margin-bottom: 13px; }
+
+    /* ── Buttons ── */
+    .btn-r {
+      display: inline-block; background: #7c2324; color: #fff !important;
+      text-decoration: none !important; padding: 9px 20px; border-radius: 6px;
+      font-size: 0.86rem; font-weight: 700; transition: background 0.2s; margin-top: 4px;
+    }
+    .btn-r:hover { background: #5a1819 !important; }
+    .btn-o {
+      display: inline-block; background: #fff; color: #7c2324 !important;
+      text-decoration: none !important; padding: 8px 18px; border-radius: 6px;
+      border: 1.5px solid #7c2324; font-size: 0.86rem; font-weight: 700;
+      transition: all 0.2s; margin-top: 4px; margin-left: 6px;
+    }
+    .btn-o:hover { background: #7c2324; color: #fff !important; }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      .goals-chips, .svc-grid { grid-template-columns: 1fr 1fr; }
+      .ms-intro-grid { grid-template-columns: 1fr; }
+      .eq-grid { grid-template-columns: 1fr 1fr; }
+      .team-sec { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .goals-chips, .svc-grid, .eq-grid, .bridge-list { grid-template-columns: 1fr; }
+      .team-sec { grid-template-columns: 1fr 1fr; }
+      .hsi-blk { flex-direction: column; }
+      .cta-bann { flex-direction: column; align-items: flex-start; }
+      .page-nav { gap: 6px; }
+    }
+  </style>
+
+  <!-- ═══ PAGE NAVIGATION ═══ -->
+  <div class="page-nav">
+    <div class="page-nav-label">Jump to a section:</div>
+    <a href="#services">⚙️ Services</a>
+    <a href="#makerspace">🛠️ Makerspace</a>
+    <a href="#events">📅 Events</a>
+    <a href="#bridge">🌉 STEM Bridge</a>
+    <a href="#transfer">🏫 Transfer</a>
+    <a href="#team">👋 Team</a>
+    <a href="#hsi">🏛️ HSI</a>
+    <a href="#internships">💼 Internships</a>
+    <a href="#prodev">📊 Professional Development</a>
   </div>
 
-  <!-- PAGE HEADER -->
-  <div class="page-header">
+  <!-- ═══ HERO ═══ -->
+  <div class="prog-hero">
+    <div class="hero-deco">
+      <span>🔬</span><span>🧬</span><span>⚙️</span><span>💡</span><span>🚀</span>
+    </div>
     <h1>Yo Soy STEM</h1>
-    <p>Title III Hispanic-Serving Institution (HSI) STEM Grant Program &mdash; San Diego City College</p>
+    <p class="hero-sub">
+      Title III HSI STEM Grant Program &mdash; San Diego City College<br>
+      <em style="font-style:normal; font-size:0.88rem;">"Advancing the success of Latinx/Chicanx &amp; low-income students in STEM"</em>
+    </p>
+    <a href="/cdn-cgi/l/email-protection#67040e131e381e0814081e1413020a27140304040349020312" class="hero-email">✉ <span class="__cf_email__" data-cfemail="cba8a2bfb294b2a4b8a4b2b8bfaea68bb8afa8a8afe5aeafbe">[email&#160;protected]</span></a>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="page-body">
+  <!-- ═══ 1. ABOUT ═══ -->
+  <h2 class="mc-h2" id="about"><span class="sh-icon">🌟</span> About the Program</h2>
+  <div class="about-box">
+    <div class="quote-strip">
+      "This competition specifically acknowledges the importance of student-centered programs that will increase the number of Hispanic and low-income students who graduate with degrees in STEM fields, as well as the need to promote support systems to ensure that community college students will continue to pursue STEM degrees once enrolled at a four-year institution." — <strong>U.S. Department of Education, 2021</strong>
+    </div>
+    <p>
+      Welcome! <strong>Yo Soy STEM</strong> is a federally-funded Title III HSI STEM Grant program right here at San Diego City College — and it was built for <em>you</em>. Whether you're just starting to explore science and technology, already know you want to transfer in a STEM field, or looking for real work experience while you study, Yo Soy STEM has free resources to support your journey.
+    </p>
+    <p>
+      Our program serves <strong>Hispanic and low-income students</strong> at SDCC by removing barriers, building community, and opening doors to STEM careers and university pathways. No matter where you're starting from — <strong>you belong here</strong>.
+    </p>
+    <div class="goals-chips">
+      <div class="g-chip"><span class="gi">💼</span><strong>Work-Based Learning</strong>Paid internships &amp; real-world STEM experience</div>
+      <div class="g-chip"><span class="gi">📈</span><strong>Academic Success</strong>Tutoring, counseling &amp; program completion</div>
+      <div class="g-chip"><span class="gi">🤝</span><strong>Student Support</strong>Mentorship, community &amp; integrated resources</div>
+    </div>
+  </div>
 
-    <!-- INTRO -->
-    <div class="intro-section fade-in">
-      <div class="intro-text">
-        <h2>Program Overview</h2>
-        <p>
-          <strong>Yo Soy STEM</strong> is a Title III Hispanic-Serving Institution (HSI) STEM Grant
-          program designed to expand educational opportunities for Hispanic and low-income students
-          pursuing STEM degrees.
-        </p>
-        <p>The program aims to:</p>
+  <!-- ═══ 2. CORE SERVICES ═══ -->
+  <h2 class="mc-h2" id="services"><span class="sh-icon">⚙️</span> Core Services</h2>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <span class="si">🎓</span>
+      <h3>Academic Counseling</h3>
+      <p>Personalized STEM degree planning with a dedicated Yo Soy STEM counselor. Map your classes, transfer requirements, and career goals.</p>
+      <span class="free-pill">● Free</span><br>
+      <a href="https://outlook.office.com/book/YoSoySTEMAcademicCounseling@sdccd.edu/?ismsaljsauthenabled" target="_blank" rel="noopener" class="svc-link">Book an Appointment →</a>
+    </div>
+    <div class="svc-card">
+      <span class="si">📚</span>
+      <h3>Tutoring</h3>
+      <p>Struggling with calculus, chemistry, or coding? STEM tutors are here to help you work through tough material and stay on track.</p>
+      <span class="free-pill">● Free</span><br>
+      <a href="/cdn-cgi/l/email-protection#187b716c614761776b77616b6c7d75586b7c7b7b7c367d7c6d" class="svc-link">Get Tutoring →</a>
+    </div>
+    <div class="svc-card">
+      <span class="si">🔗</span>
+      <h3>Peer Mentorship</h3>
+      <p>Connect with inspiring Latinx/Chicanx faculty, staff, and STEM professionals. Guidance on transfer, careers, and internships.</p>
+      <span class="free-pill">● Free</span><br>
+      <a href="/cdn-cgi/l/email-protection#8cefe5f8f5d3f5e3ffe3f5fff8e9e1ccffe8efefe8a2e9e8f9" class="svc-link">Learn More →</a>
+    </div>
+  </div>
+  <div class="svc-grid" style="margin-bottom:14px;">
+    <div class="svc-card">
+      <span class="si">💻</span>
+      <h3>Daily Laptop &amp; Calculator Checkout</h3>
+      <p>Need tech for your day? Yo Soy STEM students can check out laptops and calculators on campus — no cost, no hassle.</p>
+      <span class="free-pill">● Free</span>
+    </div>
+    <div class="svc-card">
+      <span class="si">👥</span>
+      <h3>Group Study Sessions</h3>
+      <p>S-401 Study Space is reserved for Yo Soy STEM students. Build your study community and find your academic crew.</p>
+      <span class="free-pill">● Free</span>
+    </div>
+    <div class="svc-card">
+      <span class="si">🗓️</span>
+      <h3>Monthly Workshops</h3>
+      <p>Transfer panels, career exploration, paid summer undergraduate research, and more. Follow on Instagram for updates.</p>
+      <span class="free-pill">● Free</span><br>
+      <a href="https://www.instagram.com/sdcityhsi" target="_blank" rel="noopener" class="svc-link">@sdcityhsi →</a>
+    </div>
+  </div>
+
+  <div class="cta-bann">
+    <div>
+      <h3>📞 Ready to get started? Book your counseling appointment today.</h3>
+      <p>The Yo Soy STEM counseling team will help you build your STEM path at SDCC and beyond.</p>
+    </div>
+    <a href="https://outlook.office.com/book/YoSoySTEMAcademicCounseling@sdccd.edu/?ismsaljsauthenabled" target="_blank" rel="noopener" class="btn-wh">Book Appointment →</a>
+  </div>
+
+  <!-- ═══ 3. MAKERSPACE ═══ -->
+  <h2 class="mc-h2" id="makerspace"><span class="sh-icon">🛠️</span> Yo Soy STEM Makerspace</h2>
+  <div class="ms-wrap">
+    <div class="ms-topbar">
+      <h3>🔧 Yo Soy STEM Makerspace — Room R301</h3>
+      <span class="ms-loc">📍 3rd Floor, Learning Resource Center (LRC) — near elevator</span>
+    </div>
+    <div class="ms-intro-grid">
+      <div>
+        <p>Welcome to the <strong>Yo Soy STEM Makerspace</strong>, located near the elevator on the third floor of the Learning Resource Center (LRC) in <strong>room R301</strong>. This creative hub is open to <strong>all SDCC students</strong>, whether you're enrolled in a STEM program or not!</p>
+        <p>Bring your ideas to life through design, fabrication, and customization. <strong>No prior experience is necessary</strong> — Yo Soy STEM staff will show you how to use every piece of equipment.</p>
+        <p style="font-size:0.85rem; color:#666;">📦 <em>Materials provided at no cost for prototyping. Students creating items in bulk should bring their own supplies.</em></p>
+      </div>
+      <div class="ms-photo-box">
+        <span class="pi">🖼️</span>
+        <p>Makerspace Photo<br><span style="font-weight:400; font-size:0.76rem; color:#b07070;">Replace with actual photo</span></p>
+      </div>
+    </div>
+    <div class="ms-body">
+      <div class="ideas-bar">
+        <div class="ideas-title">💡 What could YOU make here?</div>
+        <div class="ideas-chips">
+          <span class="ic">✂️ Custom vinyl stickers</span>
+          <span class="ic">👕 Iron-on T-shirt designs</span>
+          <span class="ic">🪵 Laser-engraved wood signs</span>
+          <span class="ic">🎓 Personalized graduation items</span>
+          <span class="ic">⚙️ 3D-printed prototypes</span>
+          <span class="ic">☕ Custom mugs &amp; gifts</span>
+          <span class="ic">🎨 Acrylic art &amp; keychains</span>
+          <span class="ic">📐 Engineering models</span>
+          <span class="ic">🏠 Architectural mock-ups</span>
+          <span class="ic">🌟 Club &amp; event merch</span>
+        </div>
+      </div>
+
+      <h3 style="font-size:0.96rem; font-weight:700; color:#222; margin-bottom:12px;">Available Equipment</h3>
+      <div class="eq-grid">
+        <div class="eq-card hi">
+          <div class="eq-top"><span class="eq-emoji">✂️</span>
+            <div><h4>Cricut Maker® 3</h4>
+              <div class="eq-tags"><span class="bg">Drop-In Available</span><span class="bgr">No Appointment</span></div>
+            </div>
+          </div>
+          <p>Cut over <strong>100 different types of materials</strong> — vinyl, iron-on, paper, fabric, leather, and more. Perfect for stickers, apparel, and creative projects.</p>
+        </div>
+        <div class="eq-card hi">
+          <div class="eq-top"><span class="eq-emoji">🗜️</span>
+            <div><h4>Cricut Autopress™</h4>
+              <div class="eq-tags"><span class="bg">Drop-In Available</span></div>
+            </div>
+          </div>
+          <p>A professional <strong>heat press for fabric and apparel</strong>. Transfer your Cricut designs onto T-shirts, tote bags, and wearables.</p>
+        </div>
+        <div class="eq-card hi">
+          <div class="eq-top"><span class="eq-emoji">🔥</span>
+            <div><h4>Glowforge Pro Laser Cutter/Engraver</h4>
+              <div class="eq-tags"><span class="bo">📅 Appointment Only</span></div>
+            </div>
+          </div>
+          <p>Cut &amp; engrave <strong>wood, cardboard, leather, and acrylic</strong>. Make signs, gifts, engineering prototypes. First visit = training session.</p>
+        </div>
+        <div class="eq-card">
+          <div class="eq-top"><span class="eq-emoji">🖨️</span>
+            <div><h4>3D Printer</h4>
+              <div class="eq-tags"><span class="bb">Coming Soon</span><span class="bo">📅 Appointment</span></div>
+            </div>
+          </div>
+          <p>Print <strong>3D objects in plastic filament (PLA)</strong>. Turn CAD designs into real physical prototypes for engineering, art, and more.</p>
+        </div>
+        <div class="eq-card">
+          <div class="eq-top"><span class="eq-emoji">☕</span>
+            <div><h4>Mug Press</h4>
+              <div class="eq-tags"><span class="bb">Coming Soon</span></div>
+            </div>
+          </div>
+          <p>Press a <strong>custom vinyl design onto a mug</strong>. Perfect for personalized gifts, club merchandise, and keepsakes.</p>
+        </div>
+      </div>
+
+      <div class="rules-box">
+        <h4>📋 Rules &amp; Procedures</h4>
         <ul>
-          <li>Provide work-based learning experiences</li>
-          <li>Enhance academic success and program completion</li>
-          <li>Provide integrated student support services</li>
+          <li><em>Drop-in Hours:</em> Mon, Tue, Wed 2:00 pm – 5:00 pm; Thur 10:30 am – 2:00 pm <span style="color:#777;">(for machines that do not require appointments)</span></li>
+          <li>Appointments for Makerspace machines are for <strong>1 hour</strong>. The Glowforge and 3D printer tend to take time, so appointments are required. The <strong>first appointment is always a training session</strong> on that machine.</li>
+          <li>Materials are provided at <strong>no cost</strong> for creating prototypes. Students creating items in bulk should bring their own supplies.</li>
         </ul>
       </div>
 
-      <div class="intro-flyer">
-        <div class="flyer-placeholder">
-          <span class="logo-big">Yo Soy STEM</span>
-          <p>San Diego City College<br>HSI STEM Grant Program</p>
-        </div>
-        <p class="caption">Official Program Flyer</p>
+      <a href="https://outlook.office365.com/book/YoSoySTEMMakerspaceAppointments@sdccd.edu/?ismsaljsauthenabled=true"
+         target="_blank" rel="noopener" class="btn-book-blue">
+        📅 Book a Makerspace Machine
+      </a>
+
+      <div class="ms-contact">
+        <strong>Questions?</strong> Contact <strong>Lawson Hardrick-Cervantes</strong> at
+        <a href="/cdn-cgi/l/email-protection#6c00040d1e081e050f070f091e1a0d0218091f2c1f080f0f0842090819"><span class="__cf_email__" data-cfemail="f39f9b928197819a909890968185929d879680b38097909097dd969786">[email&#160;protected]</span></a> or
+        <a href="tel:+16193883057">(619) 388-3057</a>.
+        <div class="ms-note">📸 <a href="https://www.instagram.com/sdcityhsi" target="_blank" rel="noopener">@sdcityhsi</a> &nbsp;|&nbsp; 🔗 <a href="https://tinyurl.com/SDCityMakerspaceBookings" target="_blank" rel="noopener">tinyurl.com/SDCityMakerspaceBookings</a></div>
+        <div class="ms-note">**Note: The San Diego Public Library (330 Park Blvd.) also offers 3D printing through their <a href="https://www.sandiego.gov/public-library/central-library/idea-lab" target="_blank" rel="noopener"><strong>Idea Lab</strong></a>.</div>
       </div>
     </div>
+  </div>
 
-    <!-- SERVICES -->
-    <h2 class="section-title">Services &amp; Programs</h2>
-    <div class="services-grid">
-      <div class="service-card fade-in">
-        <h3>&#127891; Academic Counseling</h3>
-        <p>Book appointments with the Yo Soy STEM Academic Counseling team through our scheduling system for personalized STEM degree guidance.</p>
-        <span class="badge badge-green">Free</span>
-        <div style="margin-top:14px;">
-          <a href="contact.html">Book an Appointment &rsaquo;</a>
-        </div>
-      </div>
+  <!-- ═══ 4. EVENTS ═══ -->
+  <h2 class="mc-h2" id="events"><span class="sh-icon">📅</span> Spring 2026 — Upcoming Events</h2>
 
-      <div class="service-card fade-in">
-        <h3>&#128218; Tutoring</h3>
-        <p>Tutoring services available to support student success in STEM courses. Get the academic help you need to complete your program.</p>
-        <span class="badge badge-green">Free</span>
-        <div style="margin-top:14px;">
-          <a href="contact.html">Get Tutoring &rsaquo;</a>
-        </div>
-      </div>
-
-      <div class="service-card fade-in">
-        <h3>&#129309; Mentorship</h3>
-        <p>Connect with STEM mentors and build a supportive community. Includes university transfer preparation and career/internship exploration.</p>
-        <span class="badge badge-green">Free</span>
-        <div style="margin-top:14px;">
-          <a href="contact.html">Learn More &rsaquo;</a>
-        </div>
-      </div>
+  <div class="month-hdr">April 2026</div>
+  <div class="evt-row">
+    <div class="evt-cal"><div class="cd">12</div><div class="cm">Apr</div></div>
+    <div class="evt-info">
+      <h4>Girls in STEM: Networking Breakfast</h4>
+      <div class="em"><span>📍 Student Center, SDCC</span><span>🕘 9:00 AM – 11:00 AM</span></div>
+      <p>A casual networking breakfast connecting students with female STEM professionals from San Diego companies.</p>
+      <div class="evt-chips"><span class="ch chb">Networking</span><span class="ch chg">Free</span></div>
     </div>
-
-    <!-- TEAM -->
-    <h2 class="section-title">Team Members</h2>
-
-    <p class="team-section-label">Leadership</p>
-    <div class="team-grid fade-in">
-      <div class="team-card">
-        <div class="team-avatar">ND</div>
-        <h4>Nydia Dominguez</h4>
-        <div class="role">Acting Director</div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar">CT</div>
-        <h4>Cecilia Thibeault</h4>
-        <div class="role">Program Support Technician</div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar">LH</div>
-        <h4>Lawson Hardrick-Cervantes</h4>
-        <div class="role">Coordinator</div>
-      </div>
+  </div>
+  <div class="evt-row">
+    <div class="evt-cal" style="background:#3a6b35;"><div class="cd">19</div><div class="cm">Apr</div></div>
+    <div class="evt-info">
+      <h4>Earth Day Science Fair</h4>
+      <div class="em"><span>📍 Campus Quad, SDCC</span><span>🕘 9:00 AM – 4:00 PM</span></div>
+      <p>Student-led science projects on climate, sustainability, and community health. Open to the public — judges include local scientists.</p>
+      <div class="evt-chips"><span class="ch chg">Science</span><span class="ch chg">Public Event</span><span class="ch chg">Free</span></div>
     </div>
+  </div>
 
-    <p class="team-section-label">Academic Support Leaders</p>
-    <div class="team-grid fade-in">
-      <div class="team-card">
-        <div class="team-avatar">CI</div>
-        <h4>Chelsea Ives</h4>
-        <div class="role">Academic Support Leader</div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar">RB</div>
-        <h4>Raul Bernal Gonzalez</h4>
-        <div class="role">Academic Support Leader</div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar">CP</div>
-        <h4>Chris Patino</h4>
-        <div class="role">Academic Support Leader</div>
-      </div>
+  <div class="month-hdr">May 2026</div>
+  <div class="evt-row">
+    <div class="evt-cal" style="background:#5c1a7a;"><div class="cd">03</div><div class="cm">May</div></div>
+    <div class="evt-info">
+      <h4>STEM Career Panel with Industry Professionals</h4>
+      <div class="em"><span>📍 SDCC Auditorium</span><span>🕔 5:00 PM – 7:00 PM</span></div>
+      <p>Q&amp;A with engineers, software developers, scientists, and healthcare professionals. Learn about real career paths.</p>
+      <div class="evt-chips"><span class="ch chp">Careers</span><span class="ch chg">Free</span></div>
     </div>
+  </div>
+  <div class="evt-row">
+    <div class="evt-cal"><div class="cd">17</div><div class="cm">May</div></div>
+    <div class="evt-info">
+      <h4>Girls in STEM: Hands-On Workshop</h4>
+      <div class="em"><span>📍 Room C-105, SDCC</span><span>🕙 10:00 AM – 1:00 PM</span></div>
+      <p>Half-day workshop with circuit building, coding, and biomedical science activities led by female STEM mentors.</p>
+      <div class="evt-chips"><span class="ch cho">Workshop</span><span class="ch chg">Free</span></div>
+    </div>
+  </div>
+  <div class="evt-row">
+    <div class="evt-cal" style="background:#c47000;"><div class="cd">30</div><div class="cm">May</div></div>
+    <div class="evt-info">
+      <h4>Spring Showcase &amp; Graduation Ceremony</h4>
+      <div class="em"><span>📍 SDCC Gymnasium</span><span>🕒 3:00 PM – 6:00 PM</span></div>
+      <p>End-of-semester celebration — students present final projects and receive certificates. Families welcome!</p>
+      <div class="evt-chips"><span class="ch cho">Showcase</span><span class="ch chg">Free</span><span class="ch chg">Families Welcome</span></div>
+    </div>
+  </div>
+  <p style="font-size:0.82rem; color:#888; margin-top:10px;">
+    📸 Follow <a href="https://www.instagram.com/sdcityhsi" target="_blank" rel="noopener"><strong>@sdcityhsi</strong></a> for the latest &nbsp;|&nbsp;
+    🔗 <a href="https://linktr.ee/sdcityhsit3" target="_blank" rel="noopener">linktr.ee/sdcityhsit3</a>
+  </p>
 
-    <!-- HSI DESIGNATION -->
-    <h2 class="section-title">HSI Designation</h2>
-    <div class="hsi-section fade-in">
-      <div class="hsi-badge">
-        <span>&#127891;</span>
-        HSI<br>Designated
+  <!-- ═══ 7. MEET THE TEAM ═══ -->
+  <h2 class="mc-h2" id="team"><span class="sh-icon">👋</span> Meet the Team</h2>
+  <p style="font-size:0.91rem; color:#555; margin-bottom:16px;">Our dedicated team is here to support your STEM journey every step of the way. Don't hesitate to reach out!</p>
+
+  <div class="team-div">Leadership</div>
+  <div class="team-sec">
+    <div class="t-card">
+      <div class="t-av"><img src="https://www.sdcity.edu/about/leadership/student-services/imgs/nydia-dominguez.JPG" alt="Nydia Dominguez" onerror="this.style.display='none'; this.parentNode.innerHTML='ND';" /></div>
+      <h4>Nydia Dominguez</h4><div class="tr">Acting Director</div>
+    </div>
+    <div class="t-card">
+      <div class="t-av"><img src="https://www.sdcity.edu/about/leadership/student-services/imgs/Cecilia.jpg" alt="Cecilia Thibeault" onerror="this.style.display='none'; this.parentNode.innerHTML='CT';" /></div>
+      <h4>Cecilia Thibeault</h4><div class="tr">Program Support Technician</div>
+    </div>
+    <div class="t-card">
+      <div class="t-av"><img src="https://www.sdcity.edu/about/leadership/student-services/imgs/lawson.png" alt="Lawson Hardrick-Cervantes" onerror="this.style.display='none'; this.parentNode.innerHTML='LH';" /></div>
+      <h4>Lawson Hardrick-Cervantes</h4><div class="tr">Coordinator</div>
+    </div>
+  </div>
+
+  <div class="team-div">Academic Support Leaders</div>
+  <div class="team-sec">
+    <div class="t-card">
+      <div class="t-av"><img src="https://www.sdcity.edu/about/leadership/student-services/imgs/Chelsea-Enhanced-SR.jpg" alt="Chelsea Ives" onerror="this.style.display='none'; this.parentNode.innerHTML='CI';" /></div>
+      <h4>Chelsea Ives</h4><div class="tr">Academic Support Leader</div>
+    </div>
+    <div class="t-card">
+      <div class="t-av"><img src="https://www.sdcity.edu/about/leadership/student-services/imgs/1655056048993.jpg" alt="Raul Bernal Gonzalez" onerror="this.style.display='none'; this.parentNode.innerHTML='RB';" /></div>
+      <h4>Raul Bernal Gonzalez</h4><div class="tr">Academic Support Leader</div>
+    </div>
+    <div class="t-card">
+      <div class="t-av"><img src="https://www.sdcity.edu/about/leadership/student-services/imgs/chrisSpacePortrait.jpg" alt="Chris Patino" onerror="this.style.display='none'; this.parentNode.innerHTML='CP';" /></div>
+      <h4>Chris Patino</h4><div class="tr">Academic Support Leader</div>
+    </div>
+  </div>
+
+  <!-- ═══ 8. HSI DESIGNATION ═══ -->
+  <h2 class="mc-h2" id="hsi" style="margin-top:40px;"><span class="sh-icon">🏛️</span> HSI Designation</h2>
+  <div class="hsi-blk">
+    <div class="hsi-icon"><span class="he">🎓</span>HSI<br>Designated</div>
+    <div>
+      <h3>San Diego City College — Formally Designated Hispanic-Serving Institution</h3>
+      <p>San Diego City College is proud to be formally designated a <strong>Hispanic-Serving Institution (HSI)</strong> by the United States Department of Education. This designation enables the Yo Soy STEM grant, which focuses on the intersection of HSI designation and STEM fields.</p>
+      <p>As an HSI, SDCC serves a student body that is majority Hispanic. SDCC is committed to <strong>student success, educational equity, and social justice</strong> — and Yo Soy STEM is one of the ways we live that commitment.</p>
+      <a href="https://www.sdcity.edu/about/leadership/student-services/hsi.aspx" target="_blank" rel="noopener" class="btn-r">Visit the Official SDCC HSI Page →</a>
+    </div>
+  </div>
+
+  <!-- ═══ 9. PAID INTERNSHIPS ═══ -->
+  <h2 class="mc-h2" id="internships"><span class="sh-icon">💼</span> Paid STEM Internships</h2>
+  <div class="coming-card">
+    <h3>💼 Paid STEM Internship Opportunities</h3>
+    <p>Work-based learning experiences through paid STEM internships are coming. Get real-world experience while you're still in school. Program details forthcoming.</p>
+    <a href="/cdn-cgi/l/email-protection#57343e232e082e3824382e2423323a17243334343379323322" class="btn-r">Express Interest →</a>
+  </div>
+
+  <!-- ═══ 5. STEM BRIDGE ═══ -->
+  <h2 class="mc-h2" id="bridge"><span class="sh-icon">🌉</span> STEM Bridge Program</h2>
+  <div class="bridge-sec">
+    <h3>One-Day Intensive Program — Receive a $100 VISA Card Upon Completion!</h3>
+    <p>Yo Soy STEM's <strong>STEM Bridge</strong> is a one-day intensive program connecting you with mentors, workshops, and resources to launch your STEM path at SDCC and beyond. <strong>Upcoming dates announced on our website and Instagram.</strong></p>
+    <p style="font-size:0.9rem; color:#444;"><strong>Discover what STEM Bridge offers:</strong></p>
+    <ul class="bridge-list">
+      <li>Explore STEM majors &amp; careers</li>
+      <li>Connect with inspiring Latinx/Chicanx faculty and staff</li>
+      <li>Learn about the 4-year transfer process</li>
+      <li>Find inspiring mentors in your field</li>
+      <li>Build a supportive STEM community</li>
+      <li>Develop essential academic skills</li>
+      <li>Explore STEM internships &amp; jobs</li>
+      <li>Access workshops and resources</li>
+    </ul>
+    <div class="stipend">💰 Receive a $100 VISA card upon completion!</div>
+    <p style="font-size:0.85rem; color:#888; font-style:italic; margin-bottom:14px;">Registration coming soon. Upcoming dates via website and Instagram.</p>
+    <a href="/cdn-cgi/l/email-protection#74171d000d2b0d1b071b0d070011193407101717105a111001" class="btn-r">Stay Updated →</a>
+    <a href="https://linktr.ee/sdcityhsit3" target="_blank" rel="noopener" class="btn-o">linktr.ee/sdcityhsit3</a>
+  </div>
+
+  <!-- ═══ 6. TRANSFER ═══ -->
+  <h2 class="mc-h2" id="transfer"><span class="sh-icon">🏫</span> Transferring as a STEM Major</h2>
+  <p style="font-size:0.92rem; color:#444; margin-bottom:10px;">Planning to transfer to a 4-year university as a STEM major? This tutorial walks you through the process from San Diego City College.</p>
+  <div class="vid-placeholder">
+    <span class="vp-icon">🎬</span>
+    <h4>Video Tutorial Goes Here</h4>
+    <p>Replace this placeholder with the updated transfer guidance video for STEM majors.</p>
+  </div>
+  <p style="font-size:0.84rem; color:#666; margin-top:10px;">
+    Need transfer advising now? <a href="https://outlook.office.com/book/YoSoySTEMAcademicCounseling@sdccd.edu/?ismsaljsauthenabled" target="_blank" rel="noopener"><strong>Book an academic counseling appointment →</strong></a>
+  </p>
+
+  <!-- ═══ 10. PROFESSIONAL DEVELOPMENT ═══ -->
+  <h2 class="mc-h2" id="prodev"><span class="sh-icon">📊</span> Professional Development</h2>
+  <div class="coming-card">
+    <h3>📊 Professional Development Sessions</h3>
+    <p>Workshops and sessions to build professional skills for your STEM career. Details on upcoming sessions coming soon.</p>
+    <a href="/cdn-cgi/l/email-protection#a9cac0ddd0f6d0c6dac6d0daddccc4e9dacdcacacd87cccddc" class="btn-r">Get Notified →</a>
+  </div>
+
+  </main>
+
+
+</div><!-- /page-wrap -->
+
+
+<!-- ============================================================
+     FOOTER — matches Image 3 exactly
+     ============================================================ -->
+<footer class="site-footer">
+
+  <!-- Top grid: brand + link columns -->
+  <div class="footer-top">
+
+    <!-- Brand / address / social -->
+    <div class="ft-brand">
+      <div class="ft-brand-name">
+        <span class="brand-line1">San Diego</span>
+        <span class="brand-line2">City College</span>
       </div>
-      <div>
-        <h3>San Diego City College — Formally Designated HSI</h3>
-        <p>
-          San Diego City College holds formal HSI status from the U.S. Department of Education,
-          enabling access to the Yo Soy STEM grant focused on serving Hispanic and low-income
-          students in STEM fields.
-        </p>
-        <a href="https://www.sdcity.edu/about/leadership/student-services/hsi.aspx"
-          target="_blank" rel="noopener" class="btn-red">
-          Visit the Official SDCC HSI Page &rsaquo;
+      <address>
+        1313 Park Boulevard<br>
+        San Diego, CA 92101-4787<br>
+        (619) 388-3400
+      </address>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/SanDiegoCityCollege/" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">&#xf09a;
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="https://twitter.com/sdcitycollege" target="_blank" rel="noopener" title="X / Twitter" aria-label="X Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@sandiegocitycollege" target="_blank" rel="noopener" title="TikTok" aria-label="TikTok">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>
+        </a>
+        <a href="https://instagram.com/sandiegocitycollege" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.flickr.com/photos/sandiegocitycollege/albums" target="_blank" rel="noopener" title="Flickr" aria-label="Flickr">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><circle cx="7" cy="12" r="3.5"/><circle cx="17" cy="12" r="3.5"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/school/san-diego-city-college/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.youtube.com/channel/UCB0tQSE2Az1XELmYvoXgD-Q" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#555"/></svg>
         </a>
       </div>
+      <div class="ft-copyright">
+        &copy; 2026 San Diego City College |
+        <a href="https://www.sdcity.edu/complaint.aspx">Disclaimer</a>
+      </div>
     </div>
 
-    <!-- STEM BRIDGE PROGRAM -->
-    <h2 class="section-title">STEM Bridge Program</h2>
-    <div class="bridge-section fade-in">
-      <h3>One-Day Intensive Program</h3>
-      <p>A one-day intensive program offering:</p>
-      <ul class="bridge-list">
-        <li>Mentorship connections</li>
-        <li>Workshops and resources</li>
-        <li>Community building</li>
-        <li>University transfer preparation</li>
-        <li>Career / internship exploration</li>
+    <!-- Link columns -->
+    <div class="ft-links-col">
+      <ul>
+        <li><a href="https://www.sdcity.edu/about/accreditation/index.aspx">Accreditation</a></li>
+        <li><a href="https://www.sdcity.edu/about/contact.aspx">Contact</a></li>
+        <li><a href="https://www.sdcity.edu/about/history-facts/index.aspx">Facts Sheet</a></li>
       </ul>
-      <div class="stipend-badge">
-        &#128176; $100 compensation per participant
-      </div>
-      <p style="font-size:0.88rem; color:var(--gray-mid); font-style:italic;">Registration details coming soon.</p>
-      <div style="margin-top:14px;">
-        <a href="contact.html">Stay Updated &rsaquo;</a>
-      </div>
     </div>
 
-    <!-- PAID INTERNSHIPS -->
-    <h2 class="section-title">Paid STEM Internships</h2>
-    <div class="coming-soon-box fade-in">
-      <h3>&#128188; Paid STEM Internship Opportunities</h3>
-      <p>Work-based learning experiences through paid STEM internships. Program details forthcoming.</p>
-      <div style="margin-top:12px;"><a href="contact.html">Express Interest &rsaquo;</a></div>
+    <div class="ft-links-col">
+      <ul>
+        <li><a href="https://www.sdcity.edu/docs/SDCC-Map-Lot-5-Closure.pdf">Campus Map &#128196;</a></li>
+        <li><a href="https://www.sdcity.edu/directory/">Directory</a></li>
+        <li><a href="https://www.sdcity.edu/about/news/index.aspx">NewsCenter</a></li>
+      </ul>
     </div>
 
-    <!-- PROFESSIONAL DEVELOPMENT -->
-    <h2 class="section-title">Professional Development</h2>
-    <div class="coming-soon-box fade-in">
-      <h3>&#128736; Professional Development Sessions</h3>
-      <p>Information on upcoming professional development sessions coming soon.</p>
-      <div style="margin-top:12px;"><a href="contact.html">Get Notified &rsaquo;</a></div>
+    <div class="ft-links-col">
+      <ul>
+        <li><a href="https://sdccd.instructure.com/login" target="_blank" rel="noopener">Canvas Login</a></li>
+        <li><a href="https://login.microsoftonline.com" target="_blank" rel="noopener">Employee Email</a></li>
+        <li><a href="http://scorecard.cccco.edu/scorecardrates.aspx?CollegeID=071" target="_blank" rel="noopener">Success Scorecard</a></li>
+      </ul>
     </div>
 
-  </div><!-- /page-body -->
-
-  <!-- CONTACT STRIP -->
-  <div class="contact-strip">
-    <div class="c-item">
-      <div class="icon">&#128222;</div>
-      <div>
-        <div class="label">Phone</div>
-        <div class="value"><a href="tel:+16193883400">(619) 388-3400</a></div>
-      </div>
-    </div>
-    <div class="c-item">
-      <div class="icon">&#128247;</div>
-      <div>
-        <div class="label">Instagram</div>
-        <div class="value"><a href="https://www.instagram.com/sdcityhsi" target="_blank" rel="noopener">@sdcityhsi</a></div>
-      </div>
-    </div>
-    <div class="c-item">
-      <div class="icon">&#128205;</div>
-      <div>
-        <div class="label">Address</div>
-        <div class="value">1313 Park Blvd, San Diego, CA 92101-4787</div>
-      </div>
-    </div>
-    <div class="c-item">
-      <div class="icon">&#128279;</div>
-      <div>
-        <div class="label">Official Page</div>
-        <div class="value"><a href="https://www.sdcity.edu/about/leadership/student-services/hsi.aspx" target="_blank" rel="noopener">SDCC HSI Page</a></div>
-      </div>
-    </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="brand-name">
-          <div class="logo-sq">YS</div>
-          Yo Soy STEM
-        </div>
-        <p>A Title III HSI STEM Grant program at San Diego City College expanding educational opportunities for Hispanic and low-income students in STEM.</p>
-        <div class="social-links">
-          <a href="https://www.instagram.com/sdcityhsi" target="_blank" rel="noopener" class="social-link" title="Instagram @sdcityhsi">&#128247;</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="programs.html">Academic Counseling</a></li>
-          <li><a href="programs.html">Tutoring</a></li>
-          <li><a href="programs.html">STEM Bridge Program</a></li>
-          <li><a href="programs.html">Paid STEM Internships</a></li>
-          <li><a href="programs.html">Professional Development</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>About</h4>
-        <ul>
-          <li><a href="about.html">About Yo Soy STEM</a></li>
-          <li><a href="about.html">Our Team</a></li>
-          <li><a href="about.html">HSI Designation</a></li>
-          <li><a href="events.html">Events</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="tel:+16193883400">(619) 388-3400</a></li>
-          <li><a href="https://www.instagram.com/sdcityhsi" target="_blank" rel="noopener">@sdcityhsi</a></li>
-          <li><a href="contact.html">Get Involved</a></li>
-          <li><a href="https://www.sdcity.edu/about/leadership/student-services/hsi.aspx" target="_blank" rel="noopener">HSI at SDCC</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Yo Soy STEM &mdash; San Diego City College. All rights reserved.</p>
-      <div style="display:flex; gap:16px;">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Accessibility</a>
-        <a href="https://www.sdcity.edu" target="_blank" rel="noopener">SDCC Website</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
-</body>
-</html>
+  <!-- Bottom: college system links + badges -->
+  <div class="footer-bottom-section">
+    <div class="footer-college-links">
+      <ul>
+        <li><a href="https://www.sdccd.edu" target="_blank" rel="noopener">San Diego Community College District</a></li>
+        <li><a href="https://www.sdcity.edu">San Diego
